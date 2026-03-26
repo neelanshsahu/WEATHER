@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Unicons library for beautiful weather icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+
+<body>
+    <!-- A subtle background overlay to add texture -->
+    <div class="background-overlay"></div>
+
+    <!-- ============================================== -->
+    <!-- INITIAL SEARCH SCREEN (Shown when app loads)   -->
+    <!-- ============================================== -->
+    <div class="initial-search glass-card" id="initial-search">
+        <h2>Weather Explorer</h2>
+
+        <!-- Search bar for typing a city -->
+        <div class="search-bar init-search-bar">
+            <i class="uil uil-search"></i>
+            <input type="text" id="init-city-input" placeholder="Enter a city name...">
+            <button id="init-search-btn">Search</button>
+        </div>
+
+        <!-- Popular Cities Quick Links for beginners to click easily -->
+        <div class="quick-links">
+            <p>Or choose a popular city:</p>
+            <div class="city-chips">
+                <button class="city-chip" data-city="London">London, UK</button>
+                <button class="city-chip" data-city="New York">New York, NY</button>
+                <button class="city-chip" data-city="Tokyo">Tokyo, Japan</button>
+                <button class="city-chip" data-city="Sydney">Sydney, AUS</button>
+                <button class="city-chip" data-city="New Delhi">New Delhi, IN</button>
+            </div>
+        </div>
+
+        <!-- Loading spinner, hidden by default -->
+        <div class="loading-spinner hidden" id="loading-spinner">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MAIN WEATHER DASHBOARD (Shown after search)    -->
+    <!-- ============================================== -->
+    <div class="app-container glass-card hidden" id="weather-content">
+
+        <!-- Left Section: Current Weather Overview -->
+        <div class="current-weather-section">
+            <div class="top-search">
+                <div class="search-bar">
+                    <i class="uil uil-search"></i>
+                    <input type="text" id="city-input" placeholder="Search another city...">
+                    <button id="search-btn">🔍</button>
+                </div>
+                <p id="error-message" class="error hidden">City not found. Try again.</p>
+            </div>
+
+            <div class="current-weather-info">
+                <div class="location-box">
+                    <h1 id="city-name">London</h1>
+                    <p id="weather-description">Clear Sky</p>
+                </div>
+
+                <div class="temp-box">
+                    <i id="weather-icon" class="uil uil-sun weather-icon"></i>
+                    <h2 id="temperature">24°</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section: In-depth Details & 7-Day Forecast -->
+        <div class="weather-details-section">
+
+            <h3 class="section-title">Today's Highlights</h3>
+
+            <!-- Grid displaying 4 specific weather details -->
+            <div class="highlights-grid">
+                <div class="highlight-card glass-card-sm">
+                    <p class="h-title">Humidity</p>
+                    <div class="h-value-box">
+                        <i class="uil uil-tear"></i>
+                        <p id="humidity" class="h-value">45%</p>
+                    </div>
+                </div>
+                <div class="highlight-card glass-card-sm">
+                    <p class="h-title">Wind Status</p>
+                    <div class="h-value-box">
+                        <i class="uil uil-wind"></i>
+                        <p id="wind-speed" class="h-value">12 km/h</p>
+                    </div>
+                </div>
+                <div class="highlight-card glass-card-sm">
+                    <p class="h-title">Visibility</p>
+                    <div class="h-value-box">
+                        <i class="uil uil-eye"></i>
+                        <p id="visibility" class="h-value">10 km</p>
+                    </div>
+                </div>
+                <div class="highlight-card glass-card-sm">
+                    <p class="h-title">Precipitation</p>
+                    <div class="h-value-box">
+                        <i class="uil uil-raindrops"></i>
+                        <p id="precipitation" class="h-value">0 mm</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">7-Day Forecast</h3>
+
+            <!-- Horizontal scrolling list for the 7-day forecast -->
+            <div class="forecast-row" id="forecast-list">
+                <!-- Forecast items will be injected here by JavaScript -->
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
